@@ -3,7 +3,7 @@ import express from "express";
 import { config } from "dotenv";
 import { mongodb } from "./db";
 import bodyParser from "body-parser";
-import UserModule from './User/user.router'
+import {UserModule} from './User/user.router'
 import cors from  'cors'
 import cookieParser from 'cookie-parser'
 config();
@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 const port: number = Number(process.env.PORT);
 mongodb();
 
-app.use("/api", UserModule);
+app.use("/api", UserModule());
 
 
 
