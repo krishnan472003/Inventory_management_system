@@ -6,7 +6,7 @@ const storeSchema = new Schema(
     name: { type: String, required: true },
     users: { type: [String] },//userId of stores
     products: { type: [Object] }, // storeId of stores
-    orgId: { type: String },
+    orgId: { type: String,required:true },
   },
   {
     timestamps: true,

@@ -3,7 +3,7 @@ import { createAdmin } from './Controllers/createAdmin';
 import  {login }from './Controllers/login'
 import { createUser } from './Controllers/createUser';
 import { register } from './Controllers/register';
-import { authenticate } from './middlewares';
+import { authenticate } from '../middlewares';
 export const UserModule = () =>{
 
     const router = Router()

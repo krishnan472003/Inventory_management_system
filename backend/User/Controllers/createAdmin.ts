@@ -12,6 +12,7 @@ export const createAdmin = async (req, res) => {
       // Create a new admin user
       const newAdminUser = new User({ username, email, password, level: 1, orgId, });
       await newAdminUser.save();
+
   
       res.status(201).send(newAdminUser);
     } catch (error) {

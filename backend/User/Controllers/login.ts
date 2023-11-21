@@ -15,8 +15,15 @@ export const login = async (req, res) => {
       if (password !== user.password) {
         return res.status(401).json({ error: 'Invalid password' });
       }
-  
-      const token = jwt.sign({ _id: user._id, level: user.level }, process.env.JWT_TOKEN, { expiresIn: '12h' });
+      let tokenisedData = { _id: user._id, level: user.level}
+      if(user.level === 2){
+        tokenisedData['storeId'] = user.storeId;
+        tokenisedData['orgId'] = user.orgId;
+      }
+      else if(user.level === 1){
+        tokenisedData['orgId'] = user.orgId;
+      }
+      const token = jwt.sign(tokenisedData, process.env.JWT_TOKEN, { expiresIn: '12h' });
       res.cookie('authToken', token, { httpOnly: true });
   
       res.json({ user });
